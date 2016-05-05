@@ -1,0 +1,26 @@
+{
+  "name": "MaestroDocentes",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "angular-material": "^1.0.7",
+    "body-parser": "~1.0.0",
+    "cookie-parser": "~1.0.0",
+    "debug": "~2.2.0",
+    "express": "^4.13.4",
+    "express-session": "~1.0.0",
+    "hbs": "~3.1.0",
+    "method-override": "~1.0.0",
+    "morgan": "~1.6.1",
+    "passport": "~0.1.17",
+    "passport-local": "~0.1.6",
+    "pg": "^4.5.1",
+    "pg-hstore": "^2.3.2",
+    "react-datepicker": "^0.25.0",
+    "sequelize": "^3.20.0",
+    "serve-favicon": "~2.3.0"
+  }
+}

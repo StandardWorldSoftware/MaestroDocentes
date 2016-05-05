@@ -1,0 +1,149 @@
+/*var Sequelize = require('sequelize');
+var sequelize = new Sequelize('postgres://postgres:postgres@localhost:5432/maestros');
+
+//Definiciones
+
+var Investigacion = sequelize.define('investigacion', {
+nombre: {
+type: Sequelize.STRING
+},
+idActividad: {
+type: Sequelize.STRING
+},
+idFirma: {
+type: Sequelize.STRING
+},
+horas_semana: {
+type: Sequelize.INTEGER
+}
+});
+
+var Firma = sequelize.define('firma', {
+ruta: {
+type: Sequelize.STRING
+}
+});
+
+var EvaluacionGrupo = sequelize.define('EvaluacionGrupo', {
+valor: {
+type: Sequelize.STRING
+},
+tipoValoracion: {
+type: Sequelize.STRING,
+field: 'tipo_valoracion'
+}
+});
+
+var Asignatura = sequelize.define('asignatura', {
+codigo: {
+type: Sequelize.STRING
+},
+nombre: {
+type: Sequelize.STRING
+},
+horas_semana: {
+type: Sequelize.FLOAT
+}
+});
+
+var GrupoAsignatura = sequelize.define('grupoAsignatura', {
+idGrupo: {
+type: Sequelize.INTEGER,
+field: 'id_grupo',
+primaryKey: true
+},
+idAsigntatura: {
+type: Sequelize.INTEGER,
+field: 'id_asignatura',
+primaryKey: true
+}
+});
+
+var GrupoPersona = sequelize.define('grupoPersona', {
+idPersona: {
+type: Sequelize.INTEGER,
+field: 'id_persona',
+primaryKey: true
+},
+idGrupo: {
+type: Sequelize.INTEGER,
+field: 'id_grupo',
+primaryKey: true
+}
+});
+
+var Persona = sequelize.define('persona', {
+nombres: {
+type: Sequelize.STRING,
+field: 'first_name' // Will result in an attribute that is firstName when user facing but first_name in the database
+},
+apellidos: {
+type: Sequelize.STRING,
+field: 'last_name'
+},
+tipo: {
+type: Sequelize.STRING,
+},
+area: {
+type: Sequelize.STRING
+},
+dedicacion: {
+type: Sequelize.STRING //Dedicación en horas
+}
+});
+
+var Grupo = sequelize.define('grupo', {
+numero: {
+type: Sequelize.STRING
+}
+});
+
+//Relaciones
+
+
+Persona.belongsToMany(Grupo, {through: 'GrupoPersona', foreignKey: 'id'});
+Grupo.belongsToMany(Persona, {through: 'GrupoPersona', foreignKey: 'id'});
+Grupo.belongsToMany(Asignatura, {through: 'GrupoAsignatura', foreignKey: 'id'});
+Asignatura.belongsToMany(Grupo, {through: 'GrupoAsignatura', foreignKey: 'id'});
+Grupo.belongsTo(EvaluacionGrupo);
+Firma.belongsTo(Persona, {foreignKey: 'idPersona'});
+//Scripts de creación de tablas
+
+Firma.sync({force: true});
+
+
+Asignatura.sync({force: true});
+
+GrupoAsignatura.sync({force: true});
+
+EvaluacionGrupo.sync({force: true});
+
+
+GrupoPersona.sync({force: true}).then(function () {
+return GrupoPersona.create({
+idPersona: 1,
+idGrupo: 1
+});
+});
+
+Persona.sync({force: true}).then(function () {
+console.log('tables created');
+return Persona.create({
+nombres: 'José Antonio',
+apellidos: 'Cartagena Guerra',
+tipo: 'señor oscuro',
+area: 'artes oscuras',
+dedicacion: 1
+},{
+include: [Grupo]
+});
+});
+
+Grupo.sync({force: true}).then(function () {
+return Grupo.create({
+numero: 1
+},{
+include: [Persona]
+});
+});
+*/
