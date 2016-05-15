@@ -16,6 +16,10 @@ module.exports = function (sequelize, DataTypes) {
         classMethods: {
             associate: function(models){
                 Investigador.belongsToMany(models.Investigacion, {through: 'GrupoInvestigacion'});
+                Investigador.belongsTo(models.Persona);
+            },
+            register: function(investigador){
+                return Investigador.build(investigador).save();
             }
         }
     });

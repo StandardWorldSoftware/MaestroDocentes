@@ -5,19 +5,22 @@ module.exports = function (sequelize, DataTypes) {
         nombre: {
             type: DataTypes.STRING
         },
-        idActividad: {
-            type: DataTypes.STRING
-        },
         horas_semana: {
             type: DataTypes.INTEGER
+        },
+        productos: {
+            type: DataTypes.STRING
         }
     },
     {
         classMethods: {
             associate: function(models){
                 Investigacion.belongsToMany(models.Investigador, {through: 'GrupoInvestigacion'});
-                Investigacion.belongsToMany(models.Producto, {through: 'InvestigacionProducto'});
+                Investigacion.belongsToMany(models.Producto, {through: models.InvestigacionProducto});
                 Investigacion.belongsTo(models.ActividadTipo);
+            },
+            register: function(investigacion){
+                return Investigacion.build(investigacion).save();
             }
         }
     });

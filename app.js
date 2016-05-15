@@ -21,6 +21,13 @@ db.sequelize.sync().then(function(){
   var asignatura = require('./routes/asignatura');
   var docenciaDirecta = require('./routes/docenciaDirecta');
   var evalGrupo = require('./routes/evalGrupo');
+  var actividadTipo = require('./routes/actividadTipo');
+  var producto = require('./routes/producto');
+  var investigacion = require('./routes/investigacion');
+
+  app.use('/investigacion', investigacion);
+  app.use('/producto', producto);
+  app.use('/actividadTipo', actividadTipo);
   app.use('/evalGrupo', evalGrupo);
   app.use('/login',auth);
   app.use('/maestros', docenciaDirecta);

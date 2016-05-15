@@ -7,25 +7,23 @@ module.exports = function(sequelize, DataTypes){
 
     var Producto = sequelize.define('Producto', {
         nombre: {
-            type: DataTypes.STRING
-        },
-        codigo: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            unique: true
         },
         valor: {
             type: DataTypes.FLOAT
         },
         descripcion: {
             type: DataTypes.STRING
-        },
-        cantidad: {
-            type: DataTypes.INTEGER
         }
     },
     {
         classMethods: {
             associate: function(models){
-                Producto.belongsToMany(models.Investigacion, {through: 'InvestigacionProducto'});
+                Producto.belongsToMany(models.Investigacion, {through: models.InvestigacionProducto});
+            },
+            register: function (producto) {
+                return Producto.build(producto).save();
             }
         }
     });

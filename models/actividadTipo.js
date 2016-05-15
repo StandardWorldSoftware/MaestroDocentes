@@ -6,8 +6,19 @@
 module.exports = function(sequelize, DataTypes){
     var ActividadTipo = sequelize.define('ActividadTipo', {
         descripcion: {
-           type: DataTypes.STRING
+           type: DataTypes.STRING,
+           unique: true
+        },
+        horas_semana: {
+            type: DataTypes.INTEGER
         }
-    });
+    },
+        {
+            classMethods: {
+                register: function (actividad) {
+                    return ActividadTipo.build(actividad).save();
+                }
+            }
+        });
     return ActividadTipo;
 }

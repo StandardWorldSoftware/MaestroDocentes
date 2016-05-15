@@ -43,7 +43,7 @@ module.exports = function (sequelize, DataTypes) {
         classMethods: {
             associate: function (models) {
                 Persona.belongsToMany(models.Observaciones, {through: 'ObservacionesPersona'});
-                Persona.hasMany(models.Investigacion);
+                Persona.hasMany(models.Investigacion, {as: 'firma'});
                 Persona.hasMany(models.ActividadesExt, {as : 'firma'});
 
             },
