@@ -56,7 +56,7 @@ module.exports = function (sequelize, DataTypes) {
                 }).then(function(user){
                    if(user)
                    {
-                       return "exits";
+                       return user.dataValues;
                    }
                    return "error";
                })
