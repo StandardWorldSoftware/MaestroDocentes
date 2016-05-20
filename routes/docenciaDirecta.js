@@ -24,5 +24,28 @@ router.route('/')
                 res.send(err);
             });
     });
+router.route('/delete')
+    .post(function(req,res){
+        console.log(req.body.id);
+        models.Grupo.findById(req.body.id).then(function(result){
+            res.send(result.destroy());
+        },
+        function(err){
+            res.send(err);
+        })
+    });
 
+router.route('/edit')
+    .post(function(req, res){
+        console.log("Numero = " + req.body.grupo);
+        console.log("ID = " + req.body.id);
+        models.Grupo.findById(req.body.id).then(function(result){
+           result.updateAttributes({numero: req.body.grupo}).then(function(update){
+               res.send(update);
+           },
+           function(){
+               res.send("Error");
+           });
+        });
+    })
 module.exports = router;

@@ -6,6 +6,7 @@ var passport = require('passport');
 var methodOverride = require('method-override');
 var db = require('./models');
 
+
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -24,7 +25,9 @@ db.sequelize.sync().then(function(){
   var actividadTipo = require('./routes/actividadTipo');
   var producto = require('./routes/producto');
   var investigacion = require('./routes/investigacion');
+  var firmarInvestigacion = require('./routes/firmarInvestigacion');
 
+  app.use('/firmarInvestigacion', firmarInvestigacion);
   app.use('/investigacion', investigacion);
   app.use('/producto', producto);
   app.use('/actividadTipo', actividadTipo);
@@ -35,7 +38,6 @@ db.sequelize.sync().then(function(){
   app.use(express.static('client'));
 
   console.log("Connected to database");
-
 
 
 }, function(err){

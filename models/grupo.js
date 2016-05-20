@@ -27,6 +27,9 @@ module.exports = function (sequelize, DataTypes) {
                 },
                 register:function(grupo){
                     return Grupo.build(grupo).save();
+                },
+                delete:function(grupo){
+                    return Grupo.destroy(grupo);
                 }
             }
         });

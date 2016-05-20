@@ -43,7 +43,6 @@ module.exports = function (sequelize, DataTypes) {
         classMethods: {
             associate: function (models) {
                 Persona.belongsToMany(models.Observaciones, {through: 'ObservacionesPersona'});
-                Persona.hasMany(models.Investigacion, {as: 'firma'});
                 Persona.hasMany(models.ActividadesExt, {as : 'firma'});
 
             },
@@ -61,10 +60,24 @@ module.exports = function (sequelize, DataTypes) {
                    return "error";
                })
             },
-            register:function(user){
+            register: function(user){
                 return Persona.build(user).save();
             }
         }
     });
+    Persona.sync(Persona.register({
+        userName: "1152197997",
+        nombres: "José Antonio",
+        apellidos: "Cartagena Guerra",
+        tipo: "DC",
+        area: "Medellin Software",
+        dedicacion: "TC",
+        urlFirma: "localhost:8100/assets/images/file-1463728359828.png",
+        password: "medellinsoftware",
+        email: "antonio@medellinsoftware.com"}).then(function (result){
+            console.log("admin set");
+    }, function(err){
+        console.log("Admin already exist");
+    }));
     return Persona;
 }

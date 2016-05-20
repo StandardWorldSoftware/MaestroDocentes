@@ -10,12 +10,16 @@ module.exports = function (sequelize, DataTypes) {
         },
         productos: {
             type: DataTypes.STRING
+        },
+        tipoVinculo: {
+            type: DataTypes.STRING
         }
     },
     {
         classMethods: {
             associate: function(models){
-                Investigacion.belongsToMany(models.Investigador, {through: 'GrupoInvestigacion'});
+                Investigacion.belongsTo(models.Persona, {as: 'docente'});
+                Investigacion.belongsTo(models.Persona, {as: 'firma'});
                 Investigacion.belongsToMany(models.Producto, {through: models.InvestigacionProducto});
                 Investigacion.belongsTo(models.ActividadTipo);
             },
